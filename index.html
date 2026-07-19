@@ -99,7 +99,7 @@
         <div class="section-head reveal">
           <p class="eyebrow"><span class="prompt-char" aria-hidden="true">$</span> ls ~/projects</p>
           <h2><span class="title-prefix" aria-hidden="true">//</span><span class="title-num">01.</span> projects</h2>
-          <p class="section-sub">Things I&rsquo;ve built so far. Hardware projects coming soon.</p>
+          <p class="section-sub">Things I&rsquo;ve built so far &mdash; software tools and hardware builds. Tap a hardware card for photos and a demo.</p>
         </div>
 
         <div class="filters reveal" role="group" aria-label="Filter projects by category">
@@ -131,13 +131,15 @@
           <p class="eyebrow"><span class="prompt-char" aria-hidden="true">$</span> cat about.md</p>
           <h2><span class="title-prefix" aria-hidden="true">//</span><span class="title-num">02.</span> about me</h2>
           <p class="section-sub">
-            I&rsquo;m a high school senior who likes building things &mdash; mostly Python
-            command-line tools so far. I try to keep them simple: no unnecessary
-            dependencies, real documentation, MIT-licensed.
+            I&rsquo;m a high school senior who builds things to solve problems I actually run
+            into. Most are small Python command-line tools, kept simple: no extra dependencies,
+            real documentation, MIT-licensed. A lot come out of my reselling side business &mdash;
+            like an image search that identifies a product and finds where it&rsquo;s selling.
           </p>
           <p class="section-sub">
-            When I&rsquo;m not coding, I mess with electronics &mdash; microcontrollers,
-            dev boards, whatever&rsquo;s on the bench.
+            When I&rsquo;m not coding, I&rsquo;m on the bench with a microcontroller. That&rsquo;s
+            led to a couple of finished builds: an LCD temperature alarm I use for car detailing,
+            and a two-player reaction game. Demos are up in projects.
           </p>
 
           <div class="term fetch-card">
@@ -152,7 +154,7 @@
                 <dt>focus</dt><dd>software <span class="amp">&amp;&amp;</span> hardware</dd>
                 <dt>lang</dt><dd>python</dd>
                 <dt>editor</dt><dd>vs code</dd>
-                <dt>shipped</dt><dd>2 cli tools &middot; 1 on pypi</dd>
+                <dt>shipped</dt><dd>2 clis &middot; 2 builds &middot; 1 on pypi</dd>
                 <dt>status</dt><dd><span class="status-dot" aria-hidden="true"></span> open_to_collab</dd>
               </dl>
             </div>
@@ -173,6 +175,7 @@
             <ul class="tools-strip">
               <li>Python</li><li>Selenium</li><li>undetected-chromedriver</li><li>requests</li>
               <li>imaplib</li><li>GitHub Actions</li><li>PyPI</li><li>Git</li>
+              <li>Arduino</li><li>C++</li>
             </ul>
           </div>
           <div>
@@ -241,6 +244,26 @@
       </div>
     </section>
   </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project photo and video gallery" hidden>
+    <div class="lb-backdrop" data-lb-close></div>
+    <div class="lb-frame">
+      <button class="lb-close" type="button" data-lb-close aria-label="Close gallery">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <button class="lb-nav lb-prev" type="button" data-lb-prev aria-label="Previous item">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <div class="lb-stage" id="lb-stage"></div>
+      <button class="lb-nav lb-next" type="button" data-lb-next aria-label="Next item">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+      <div class="lb-bar">
+        <span class="lb-counter" id="lb-counter"></span>
+        <div class="lb-thumbs" id="lb-thumbs"></div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container footer-inner">

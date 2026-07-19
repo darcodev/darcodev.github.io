@@ -5,7 +5,7 @@ const PROJECTS = [
     kind: "pypi library",
     tagline: "pip install chrome-lens-search",
     description:
-      "Unofficial Google Lens product search over plain HTTP. Exact product titles and merchant links from any image — no paid API.",
+      "Reverse-engineered the Google Lens product-search endpoint so you can search by image straight from the command line — no browser, no paid API. Feed it a photo and it returns exact product titles with links to the merchants selling them (Nike, StockX, GOAT, and the rest). It talks to Lens over plain HTTP the same way Chromium does under the hood, so it's fast and barely has any dependencies. I built it for reselling: when I'm sourcing I can shoot a sneaker or item, instantly see what it is and where it's listed, and check comps without typing a single search.",
     tags: ["Python", "Reverse Engineering", "PyPI", "Selenium"],
     repo: "darcodev/chrome-lens-search",
     stars: 4,
@@ -21,13 +21,46 @@ const PROJECTS = [
     kind: "cli tool",
     tagline: "pipx install email-cleaner",
     description:
-      "Bulk-cleans promotional email over IMAP — Gmail, Outlook, iCloud, Yahoo. Previews first; nothing deleted without asking.",
+      "A zero-dependency CLI that bulk-cleans promotional email straight over IMAP — Gmail, Outlook, iCloud, and Yahoo. It scans the inbox, groups the marketing and newsletter clutter by sender, and shows a preview before anything is touched — nothing gets deleted without your say-so. Reselling means signing up at a lot of stores and marketplaces, so my inbox fills fast with drops, promos, and receipts; this clears the noise in one pass instead of unsubscribing one by one. It runs on nothing but Python's standard library, so there's nothing extra to install.",
     tags: ["Python", "IMAP", "CLI", "Zero Deps"],
     repo: "darcodev/email-cleaner",
     stars: 4,
     icon: "mail",
     links: [
       { label: "GitHub", url: "https://github.com/darcodev/email-cleaner", icon: "github" },
+    ],
+  },
+  {
+    name: "lcd-temp-alarm",
+    category: "hardware",
+    kind: "hardware build",
+    tagline: "arduino uno · 16×2 lcd · °f",
+    description:
+      "An Arduino Uno reads the ambient temperature and shows it live on a 16×2 LCD in °F. Cross the set limit and the screen flips to a Temp Limit! warning and lights the alarm LED. I built it for my car detailing business — in summer heat, detailing chemicals dry too fast and lose their effect, so I check whether a panel is cool enough to work before I start. In the demo the limit is 87°F (set it to whatever you want): I warm the sensor with my finger to trip the alarm, then let go and it settles back under the line.",
+    tags: ["Arduino", "C++", "LCD", "Sensor"],
+    icon: "thermometer",
+    cover: "assets/projects/lcd-temp-alarm/cover.webp",
+    media: [
+      { type: "image", src: "assets/projects/lcd-temp-alarm/01.webp", alt: "LCD showing the Temp Limit! alarm at 87.4°F" },
+      { type: "image", src: "assets/projects/lcd-temp-alarm/02.webp", alt: "LCD showing the live temperature, 88.3°F" },
+      { type: "youtube", id: "zYIsCFyWwkE", title: "LCD temp alarm — demo", aspect: "portrait" },
+    ],
+  },
+  {
+    name: "memory-speed-game",
+    category: "hardware",
+    kind: "hardware build",
+    tagline: "arduino · leds · buttons",
+    description:
+      "A two-player reaction game on a breadboard. Green then yellow LEDs count down a second apart, then the red one holds for a random 1–5 seconds, buzzer beeping through it. The moment the red LED goes dark, the two white side LEDs light up — first player to hit their button wins, and the buzzer calls it.",
+    tags: ["Arduino", "C++", "LEDs", "Buttons"],
+    icon: "gamepad",
+    cover: "assets/projects/memory-speed-game/cover.webp",
+    media: [
+      { type: "youtube", id: "ORqZgaVXeKQ", title: "Memory speed game — demo", aspect: "portrait" },
+    ],
+    links: [
+      { label: "inspired by Robonyx", url: "https://www.youtube.com/@Robonyx", icon: "external" },
     ],
   },
 ];
@@ -40,6 +73,11 @@ const ICONS = {
   package: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>',
   external: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>',
   star: '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L21.5 9.27l-4.75 4.36L18.18 20 12 16.56 5.82 20l1.43-6.37L2.5 9.27l6.6-1.01z"/></svg>',
+  thermometer: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>',
+  gamepad: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg>',
+  image: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>',
+  expand: '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>',
+  play: '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
 };
 
 const grid = document.getElementById("project-grid");
@@ -64,16 +102,33 @@ function renderProjects(filter = "all") {
     .map((p, i) => {
       const tags = p.tags ?? [];
       const links = p.links ?? [];
-      return `
-    <article class="card reveal" data-category="${esc(p.category)}" style="--stagger:${i * 60}ms" ${p.repo ? `data-repo="${esc(p.repo)}"` : ""}>
-      <div class="card-top">
+      const media = p.media ?? [];
+      const photoCount = media.filter((m) => m.type === "image").length;
+      const hasVideo = media.some((m) => m.type === "youtube");
+      let badge = "gallery";
+      let badgeIcon = ICONS.expand;
+      if (photoCount && hasVideo) badge = `${photoCount} photos · video`;
+      else if (photoCount) badge = `${photoCount} photo${photoCount === 1 ? "" : "s"}`;
+      else if (hasVideo) { badge = "watch demo"; badgeIcon = ICONS.play; }
+
+      const header = p.cover
+        ? `<button class="card-media" type="button" data-media-idx="${i}" aria-label="${esc(`Open ${hasVideo && !photoCount ? "demo video" : "photo and video gallery"} for ${p.name}`)}">
+        <img src="${esc(p.cover)}" alt="" loading="lazy" decoding="async" />
+        <span class="card-media-fallback" aria-hidden="true">${ICONS.image}<span>photos coming soon</span></span>
+        <span class="card-media-badge">${badgeIcon}<span>${esc(badge)}</span></span>
+      </button>`
+        : `<div class="card-top">
         <div class="card-icon">${ICONS[p.icon] || ICONS.chip}</div>
         ${
           p.repo
             ? `<span class="card-stars" title="GitHub stars" aria-label="${esc(p.stars ?? 0)} GitHub stars">${ICONS.star}<span data-stars aria-hidden="true">${esc(p.stars ?? "–")}</span></span>`
             : ""
         }
-      </div>
+      </div>`;
+
+      return `
+    <article class="card reveal${p.cover ? " card--media" : ""}" data-category="${esc(p.category)}" style="--stagger:${i * 60}ms" ${p.repo ? `data-repo="${esc(p.repo)}"` : ""}>
+      ${header}
       <div>
         ${p.kind ? `<p class="card-kind">${esc(p.kind)}</p>` : ""}
         <h3>${esc(p.name)}</h3>
@@ -97,6 +152,17 @@ function renderProjects(filter = "all") {
     </article>`;
     })
     .join("");
+
+  grid.querySelectorAll(".card-media").forEach((btn) => {
+    const proj = items[Number(btn.dataset.mediaIdx)];
+    const img = btn.querySelector("img");
+    if (img) {
+      if (img.complete && img.naturalWidth === 0) btn.classList.add("is-broken");
+      img.addEventListener("error", () => btn.classList.add("is-broken"));
+      img.addEventListener("load", () => btn.classList.remove("is-broken"));
+    }
+    btn.addEventListener("click", () => openLightbox(proj?.media ?? [], 0, btn));
+  });
 
   emptyState.hidden = items.length !== 0;
 
@@ -308,8 +374,138 @@ function initStarfield() {
   }
 }
 
+/* lightbox: photos + youtube demo */
+const lb = {
+  root: document.getElementById("lightbox"),
+  stage: document.getElementById("lb-stage"),
+  thumbs: document.getElementById("lb-thumbs"),
+  counter: document.getElementById("lb-counter"),
+  media: [],
+  index: 0,
+  trigger: null,
+};
+
+const ytThumb = (id) => `https://i.ytimg.com/vi/${esc(id)}/hqdefault.jpg`;
+
+function lbSlideHTML(m) {
+  if (m.type === "youtube") {
+    const portrait = m.aspect === "portrait" ? " lb-video--portrait" : "";
+    // youtube won't embed from a file:// page (Error 153), so use a click-through
+    // poster. the inline iframe works once it's served over http/https.
+    const httpOrigin =
+      location.protocol === "http:" || location.protocol === "https:";
+    if (!httpOrigin) {
+      const thumb = `https://i.ytimg.com/vi/${esc(m.id)}/hqdefault.jpg`;
+      return `<a class="lb-video lb-ytposter${portrait}" href="https://www.youtube.com/watch?v=${esc(m.id)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(`Watch ${m.title || "demo"} on YouTube (opens in new tab)`)}">
+        <img src="${thumb}" alt="" loading="lazy" />
+        <span class="lb-ytposter-btn">${ICONS.play}<span>Watch on YouTube</span></span>
+      </a>`;
+    }
+    return `<div class="lb-video${portrait}"><iframe
+        src="https://www.youtube-nocookie.com/embed/${esc(m.id)}?autoplay=1&rel=0&modestbranding=1"
+        title="${esc(m.title || "demo video")}"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+        allowfullscreen loading="lazy"></iframe></div>`;
+  }
+  return `<img class="lb-img" src="${esc(m.src)}" alt="${esc(m.alt || "")}" />`;
+}
+
+function lbRender() {
+  if (!lb.root) return;
+  const m = lb.media[lb.index];
+  lb.stage.innerHTML = m ? lbSlideHTML(m) : "";
+  if (lb.counter) lb.counter.textContent = `${lb.index + 1} / ${lb.media.length}`;
+  lb.thumbs.querySelectorAll("button").forEach((b, i) => {
+    const active = i === lb.index;
+    b.classList.toggle("is-active", active);
+    b.setAttribute("aria-current", active ? "true" : "false");
+  });
+}
+
+function lbGo(i) {
+  const n = lb.media.length;
+  if (!n) return;
+  lb.index = (i + n) % n;
+  lbRender();
+}
+
+function openLightbox(media, start, trigger) {
+  if (!lb.root || !media || !media.length) return;
+  lb.media = media;
+  lb.index = start || 0;
+  lb.trigger = trigger || null;
+
+  lb.thumbs.innerHTML = media
+    .map((m, i) => {
+      const isVid = m.type === "youtube";
+      const src = isVid ? ytThumb(m.id) : m.src;
+      return `<button type="button" data-lb-thumb="${i}" aria-label="${esc(
+        `Show ${isVid ? "video" : "photo"} ${i + 1}`
+      )}"><img src="${esc(src)}" alt="" loading="lazy" />${
+        isVid ? `<span class="lb-thumb-play" aria-hidden="true">${ICONS.play}</span>` : ""
+      }</button>`;
+    })
+    .join("");
+
+  lb.root.classList.toggle("is-single", media.length < 2);
+  lb.root.hidden = false;
+  document.body.classList.add("lb-open");
+  lbRender();
+  requestAnimationFrame(() => {
+    lb.root.classList.add("is-open");
+    const closeBtn = lb.root.querySelector(".lb-close");
+    if (closeBtn) closeBtn.focus();
+  });
+}
+
+function closeLightbox() {
+  if (!lb.root || lb.root.hidden) return;
+  lb.root.classList.remove("is-open");
+  document.body.classList.remove("lb-open");
+  lb.stage.innerHTML = ""; // stops any playing video
+  window.setTimeout(() => {
+    if (!lb.root.classList.contains("is-open")) lb.root.hidden = true;
+  }, 200);
+  if (lb.trigger && typeof lb.trigger.focus === "function") lb.trigger.focus();
+}
+
+function trapTab(e) {
+  const list = Array.from(
+    lb.root.querySelectorAll('button, [href], iframe, [tabindex]:not([tabindex="-1"])')
+  ).filter((el) => el.tagName === "IFRAME" || el.offsetParent !== null);
+  if (!list.length) return;
+  const first = list[0];
+  const last = list[list.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+}
+
+function initLightbox() {
+  if (!lb.root) return;
+  lb.root.addEventListener("click", (e) => {
+    if (e.target.closest("[data-lb-close]")) return closeLightbox();
+    if (e.target.closest("[data-lb-prev]")) return lbGo(lb.index - 1);
+    if (e.target.closest("[data-lb-next]")) return lbGo(lb.index + 1);
+    const thumb = e.target.closest("[data-lb-thumb]");
+    if (thumb) return lbGo(Number(thumb.dataset.lbThumb));
+  });
+  document.addEventListener("keydown", (e) => {
+    if (lb.root.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    else if (e.key === "ArrowRight") lbGo(lb.index + 1);
+    else if (e.key === "ArrowLeft") lbGo(lb.index - 1);
+    else if (e.key === "Tab") trapTab(e);
+  });
+}
+
 initStarfield();
 initTyping();
+initLightbox();
 observeReveals(document.querySelectorAll(".reveal"));
 renderProjects();
 fetchStars();
