@@ -132,7 +132,7 @@ function renderProjects(filter = "all") {
       <div>
         ${p.kind ? `<p class="card-kind">${esc(p.kind)}</p>` : ""}
         <h3>${esc(p.name)}</h3>
-        <p class="card-tagline">${esc(p.tagline ?? "")}</p>
+        ${p.tagline ? `<p class="card-tagline">${esc(p.tagline)}</p>` : ""}
       </div>
       <p class="card-desc">${esc(p.description ?? "")}</p>
       <ul class="card-tags">${tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
@@ -299,17 +299,27 @@ function initStarfield() {
   let w = 0;
   let h = 0;
   let dpr = 1;
+  let cssW = 0;
+  let cssH = 0;
+
+  // phones fire resize every time the URL bar slides in or out, and rebuilding
+  // the field on each one makes the stars visibly reshuffle mid-scroll. draw a
+  // taller canvas than the viewport and ignore height-only changes inside it.
+  const overscan = window.matchMedia("(hover: none)").matches ? 160 : 0;
 
   function resize() {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight + overscan;
+    if (vw === cssW && Math.abs(vh - cssH) <= overscan) return;
+
+    cssW = vw;
+    cssH = vh;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = canvas.width = Math.floor(window.innerWidth * dpr);
-    h = canvas.height = Math.floor(window.innerHeight * dpr);
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-    const count = Math.min(
-      150,
-      Math.floor((window.innerWidth * window.innerHeight) / 11000)
-    );
+    w = canvas.width = Math.floor(cssW * dpr);
+    h = canvas.height = Math.floor(cssH * dpr);
+    canvas.style.width = cssW + "px";
+    canvas.style.height = cssH + "px";
+    const count = Math.min(150, Math.floor((cssW * cssH) / 11000));
     stars = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
