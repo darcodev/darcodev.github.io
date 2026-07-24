@@ -5,7 +5,7 @@ const PROJECTS = [
     kind: "pypi library",
     tagline: "pip install chrome-lens-search",
     description:
-      "Reverse-engineered the Google Lens product-search endpoint so you can search by image straight from the command line — no browser, no paid API. Feed it a photo and it returns exact product titles with links to the merchants selling them (Nike, StockX, GOAT, and the rest). It talks to Lens over plain HTTP the same way Chromium does under the hood, so it's fast and barely has any dependencies. I built it for reselling: when I'm sourcing I can shoot a sneaker or item, instantly see what it is and where it's listed, and check comps without typing a single search.",
+      "Reverse engineered the Google Lens product search endpoint so you can search by image straight from the command line, with no browser and no paid API. Feed it a photo and it returns exact product titles with links to the merchants selling them, like Nike, StockX, and GOAT. It talks to Lens over plain HTTP the same way Chromium does under the hood, so it's fast and barely has any dependencies. I built it for reselling. When I'm sourcing I can shoot a sneaker, instantly see what it is and where it's listed, and check comps without typing a single search.",
     tags: ["Python", "Reverse Engineering", "PyPI", "Selenium"],
     repo: "darcodev/chrome-lens-search",
     stars: 4,
@@ -21,7 +21,7 @@ const PROJECTS = [
     kind: "cli tool",
     tagline: "pipx install email-cleaner",
     description:
-      "A zero-dependency CLI that bulk-cleans promotional email straight over IMAP — Gmail, Outlook, iCloud, and Yahoo. It scans the inbox, groups the marketing and newsletter clutter by sender, and shows a preview before anything is touched — nothing gets deleted without your say-so. Reselling means signing up at a lot of stores and marketplaces, so my inbox fills fast with drops, promos, and receipts; this clears the noise in one pass instead of unsubscribing one by one. It runs on nothing but Python's standard library, so there's nothing extra to install.",
+      "A zero dependency CLI that bulk cleans promotional email straight over IMAP, on Gmail, Outlook, iCloud, and Yahoo. It scans the inbox, groups the marketing and newsletter clutter by sender, and shows a preview before anything is touched, so nothing gets deleted without your approval. Reselling means signing up at a lot of stores and marketplaces, so my inbox fills fast with drops, promos, and receipts. This clears the noise in one pass instead of unsubscribing one by one. It runs on nothing but Python's standard library, so there's nothing extra to install.",
     tags: ["Python", "IMAP", "CLI", "Zero Deps"],
     repo: "darcodev/email-cleaner",
     stars: 4,
@@ -36,7 +36,7 @@ const PROJECTS = [
     kind: "hardware build",
     tagline: "arduino uno · 16×2 lcd · °f",
     description:
-      "An Arduino Uno reads the ambient temperature and shows it live on a 16×2 LCD in °F. Cross the set limit and the screen flips to a Temp Limit! warning and lights the alarm LED. I built it for my car detailing business — in summer heat, detailing chemicals dry too fast and lose their effect, so I check whether a panel is cool enough to work before I start. In the demo the limit is 87°F (set it to whatever you want): I warm the sensor with my finger to trip the alarm, then let go and it settles back under the line.",
+      "An Arduino Uno reads the ambient temperature and shows it live on a 16×2 LCD in °F. Cross the set limit and the screen flips to a Temp Limit warning and lights the alarm LED. I built it for my car detailing business. In summer heat, detailing chemicals dry too fast and lose their effect, so I check whether a panel is cool enough to work before I start. In the demo the limit is 87°F, but you can set it to whatever you want. I warm the sensor with my finger to trip the alarm, then let go and it settles back under the line.",
     tags: ["Arduino", "C++", "LCD", "Sensor"],
     icon: "thermometer",
     cover: "assets/projects/lcd-temp-alarm/cover.webp",
@@ -52,7 +52,7 @@ const PROJECTS = [
     kind: "hardware build",
     tagline: "arduino · leds · buttons",
     description:
-      "A two-player reaction game on a breadboard. Green then yellow LEDs count down a second apart, then the red one holds for a random 1–5 seconds, buzzer beeping through it. The moment the red LED goes dark, the two white side LEDs light up — first player to hit their button wins, and the buzzer calls it.",
+      "A two player reaction game on a breadboard. Green then yellow LEDs count down a second apart, then the red one holds for a random 1 to 5 seconds, buzzer beeping through it. The moment the red LED goes dark, the two white side LEDs light up. First player to hit their button wins, and the buzzer calls it.",
     tags: ["Arduino", "C++", "LEDs", "Buttons"],
     icon: "gamepad",
     cover: "assets/projects/memory-speed-game/cover.webp",
@@ -169,7 +169,7 @@ function renderProjects(filter = "all") {
   if (filterStatus) {
     filterStatus.textContent =
       items.length === 0
-        ? "No projects in this category yet — write-ups in progress."
+        ? "No projects in this category right now."
         : `${items.length} project${items.length === 1 ? "" : "s"} shown.`;
   }
 
