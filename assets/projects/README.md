@@ -6,6 +6,14 @@ must match the `cover` / `media` paths in [`script.js`](../../script.js).
 Current setup:
 
 ```
+navar/
+  cover.webp   <- dashboard, card thumbnail (real screenshot, demo account on a local dev run)
+  01.webp      <- dashboard overview
+  02.webp      <- inventory page
+  03.webp      <- sales page
+  (all captured against `npm run site` demo data; retake there when the UI changes)
+  (demo video slot is commented out in script.js, add the id once recorded)
+
 lcd-temp-alarm/
   cover.webp   <- LCD close-up, card thumbnail
   01.webp      <- full build photo (Temp Limit!)

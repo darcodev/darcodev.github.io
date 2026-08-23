@@ -12,6 +12,21 @@
   --color-accent-soft: rgba(0, 255, 65, 0.10);
   --color-amber: #FFB800;
 
+  /* themeable extras: things that used to be hardcoded so light mode could
+     never reach them. --glow-rgb feeds every rgba() glow/tint. */
+  --glow-rgb: 0, 255, 65;
+  --color-on-accent: #001A06;
+  --color-nav-bg: rgba(10, 10, 10, 0.88);
+  --color-nav-bg-solid: rgba(8, 10, 8, 0.97);
+  --color-term-dot: #3A3A3A;
+  --star-dim: #E0E0E0;
+  --star-green: #4AF626;
+  /* multiplier on the canvas draw alpha; light mode needs more to read
+     against a pale background (see initStarfield) */
+  --star-alpha: 1;
+
+  color-scheme: dark;
+
   --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, Consolas, monospace;
 
   --space-1: 0.25rem;
@@ -30,7 +45,38 @@
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 0 1px rgba(0, 255, 65, 0.35), 0 8px 32px rgba(0, 255, 65, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(var(--glow-rgb), 0.35), 0 8px 32px rgba(var(--glow-rgb), 0.08);
+}
+
+/* Light theme. Not white: a soft paper-green so the terminal feel survives.
+   The accent has to darken here -- #00FF41 on a light background is unreadable. */
+:root[data-theme="light"] {
+  --color-bg: #E9EDE7;
+  --color-bg-elevated: #F1F4EF;
+  --color-bg-card: #F5F8F3;
+  --color-foreground: #151A15;
+  --color-text-muted: #4C554A;
+  --color-text-dim: #6E766C;
+  --color-border: #CBD2C6;
+  --color-border-hover: #AEB7A9;
+  --color-accent: #0A7A2E;
+  --color-accent-light: #065E22;
+  --color-accent-soft: rgba(10, 122, 46, 0.12);
+  --color-amber: #8A5A00;
+
+  --glow-rgb: 10, 122, 46;
+  --color-on-accent: #F4F8F2;
+  --color-nav-bg: rgba(233, 237, 231, 0.88);
+  --color-nav-bg-solid: rgba(235, 239, 233, 0.97);
+  --color-term-dot: #C2C9BD;
+  --star-dim: #3E463C;
+  --star-green: #1C6626;
+  --star-alpha: 1.75;
+
+  --shadow-card: 0 1px 2px rgba(20, 30, 20, 0.08), 0 8px 24px rgba(20, 30, 20, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(10, 122, 46, 0.35), 0 8px 32px rgba(10, 122, 46, 0.10);
+
+  color-scheme: light;
 }
 
 /* base */
@@ -38,7 +84,6 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
   /* keeps the page from jumping sideways when the lightbox locks body scroll */
   scrollbar-gutter: stable;
 }
@@ -124,7 +169,7 @@ main > section[id] { scroll-margin-top: var(--space-4); }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 10, 10, 0.88);
+  background: var(--color-nav-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -133,7 +178,7 @@ main > section[id] { scroll-margin-top: var(--space-4); }
 /* no backdrop-filter (older android/firefox): fall back to a near-opaque bar
    so the page doesn't bleed through the nav */
 @supports not ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
-  .nav { background: rgba(8, 10, 8, 0.97); }
+  .nav { background: var(--color-nav-bg-solid); }
 }
 
 .nav-inner {
@@ -187,6 +232,24 @@ main > section[id] { scroll-margin-top: var(--space-4); }
 }
 .nav-github:hover { border-color: var(--color-accent); color: var(--color-accent); }
 
+.nav-theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.nav-theme:hover { color: var(--color-accent); border-color: var(--color-accent); }
+.nav-theme .icon-moon { display: none; }
+:root[data-theme="light"] .nav-theme .icon-sun { display: none; }
+:root[data-theme="light"] .nav-theme .icon-moon { display: block; }
+
 /* buttons */
 .btn {
   display: inline-flex;
@@ -205,11 +268,11 @@ main > section[id] { scroll-margin-top: var(--space-4); }
 
 .btn-primary {
   background: var(--color-accent);
-  color: #001A06;
+  color: var(--color-on-accent);
 }
 .btn-primary:hover {
   background: var(--color-accent-light);
-  box-shadow: 0 4px 20px rgba(0, 255, 65, 0.25);
+  box-shadow: 0 4px 20px rgba(var(--glow-rgb), 0.25);
   transform: translateY(-1px);
 }
 
@@ -272,7 +335,7 @@ h1 {
   height: 8px;
   border-radius: 50%;
   background: var(--color-accent);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+  box-shadow: 0 0 10px rgba(var(--glow-rgb), 0.7);
   flex-shrink: 0;
 }
 
@@ -324,8 +387,8 @@ h1 {
   border-bottom: 1px solid var(--color-border);
 }
 .term-dot { width: 10px; height: 10px; border-radius: 50%; }
-.term-dot.red { background: #3A3A3A; }
-.term-dot.yellow { background: #3A3A3A; }
+.term-dot.red { background: var(--color-term-dot); }
+.term-dot.yellow { background: var(--color-term-dot); }
 .term-dot.green { background: var(--color-accent); }
 .term-title {
   margin-left: var(--space-2);
@@ -357,7 +420,7 @@ h1 {
 @keyframes blink { 50% { opacity: 0; } }
 
 /* sections */
-.section { padding-block: var(--space-24); }
+.section { padding-block: var(--space-16); }
 
 .section-head { max-width: 62ch; margin-bottom: var(--space-8); }
 
@@ -405,9 +468,12 @@ h2 {
 }
 
 /* project cards */
+/* 400px min -> two columns from ~865px up, one below, and never three (the
+   container caps at 1120px). Three columns made the text ~40 characters per
+   line in a monospace face, which reads cramped. */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: var(--space-6);
 }
 
@@ -423,7 +489,7 @@ h2 {
 }
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 255, 65, 0.45);
+  border-color: rgba(var(--glow-rgb), 0.45);
   box-shadow: var(--shadow-glow);
 }
 
@@ -460,6 +526,15 @@ h2 {
   color: var(--color-text-dim);
   text-transform: lowercase;
 }
+
+.card-oss {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: var(--space-3);
+  color: var(--color-accent);
+}
+.card-oss svg { flex-shrink: 0; }
 
 .card h3 { font-size: 1.1rem; font-weight: 700; margin-top: 2px; }
 
@@ -516,6 +591,16 @@ h2 {
   vertical-align: text-bottom;
   animation: blink 1.1s steps(1) infinite;
 }
+
+/* featured card: flagship project spans the full row */
+.card--featured { grid-column: 1 / -1; }
+
+/* The cover runs the full card width rather than sitting in a side column.
+   These are wide UI screenshots and a half-width column rendered them at
+   ~486px, too small to read. aspect-ratio: auto keeps the screenshot's real
+   shape; the 16:10 the grid cards use would crop its edges (object-fit: cover). */
+.card--featured.card--media .card-media { aspect-ratio: auto; }
+.card--featured.card--media .card-media img { height: auto; }
 
 /* empty state */
 .empty-state {
@@ -647,7 +732,7 @@ h2 {
   text-align: center;
   padding: clamp(var(--space-8), 6vw, var(--space-16));
   background:
-    radial-gradient(600px 200px at 50% 0%, rgba(0, 255, 65, 0.06), transparent 70%),
+    radial-gradient(600px 200px at 50% 0%, rgba(var(--glow-rgb), 0.06), transparent 70%),
     var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -775,7 +860,7 @@ h2 {
 .lb-frame {
   position: relative;
   z-index: 1;
-  width: min(1000px, 100%);
+  width: min(1280px, 100%);
   max-height: 100%;
   display: flex;
   flex-direction: column;
@@ -832,7 +917,7 @@ h2 {
 }
 .lb-img {
   max-width: 100%;
-  max-height: min(78vh, 760px);
+  max-height: min(80vh, 860px);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-card);
@@ -940,7 +1025,7 @@ h2 {
 }
 
 @media (max-width: 640px) {
-  .section { padding-block: var(--space-16); }
+  .section { padding-block: var(--space-12); }
   main > section[id] { scroll-margin-top: var(--space-12); }
 
   /* the five nav items can't fit one line on a phone — they used to overflow
@@ -997,7 +1082,7 @@ h2 {
 /* small viewport units: keeps the lightbox off the mobile URL bar */
 @supports (height: 100svh) {
   .lightbox { height: 100svh; }
-  .lb-img { max-height: min(70svh, 760px); }
+  .lb-img { max-height: min(74svh, 860px); }
   .lb-video { max-height: 64svh; }
   .lb-video.lb-video--portrait { max-height: 74svh; }
 }

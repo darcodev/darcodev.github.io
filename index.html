@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>darcodev — Hardware &amp; Software Projects</title>
-  <meta name="description" content="Portfolio of darcodev, building hardware and software projects. Python tooling, reverse engineering, and electronics." />
+  <meta name="description" content="Portfolio of darcodev, building hardware and software projects. Navar.app, Python tooling, reverse engineering, and electronics." />
 
   <meta property="og:title" content="darcodev — Hardware &amp; Software Projects" />
-  <meta property="og:description" content="Building tools people actually use, from Python CLIs to hardware builds." />
+  <meta property="og:description" content="Building tools people actually use. Navar.app, Python CLIs, and hardware builds." />
   <meta property="og:type" content="website" />
 
   <meta name="theme-color" content="#000000" />
@@ -20,7 +20,13 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
 </head>
 <body>
   <div id="top" tabindex="-1"></div>
@@ -41,6 +47,10 @@
         <a href="#log">Log</a>
         <a href="#contact">Contact</a>
       </div>
+      <button class="nav-theme" type="button" id="theme-toggle" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13.5A8.5 8.5 0 1 1 10.5 4a6.7 6.7 0 0 0 9.5 9.5Z"/></svg>
+      </button>
       <a class="nav-github" href="https://github.com/darcodev" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in new tab)">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a11 11 0 0 1 5.76 0c2.19-1.49 3.15-1.18 3.15-1.18.63 1.58.24 2.75.12 3.04.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.26 5.66.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.21.68.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
         <span>GitHub</span>
@@ -60,9 +70,10 @@
             <span class="role-typed" aria-hidden="true">software_builder <span class="amp">&amp;&amp;</span> hardware_tinkerer</span>
           </p>
           <p class="hero-sub">
-            High school senior building tools that actually get used. Python CLIs that solve
-            real problems, reverse engineering when the official way is paid or blocked,
-            hardware on the bench.
+            High school senior building tools that actually get used. A full-stack reselling
+            platform live at <a class="inline-link" href="https://navar.app" target="_blank" rel="noopener noreferrer">navar.app</a>,
+            Python CLIs that solve real problems, reverse engineering when the official way
+            is paid or blocked, hardware on the bench.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">
@@ -137,7 +148,10 @@
             I&rsquo;m a high school senior. I build small Python command line tools to solve
             problems I actually run into, with no extra dependencies, real docs, and an MIT
             license. A lot come out of my reselling side business, like an image search that
-            identifies a product and finds where it&rsquo;s selling.
+            identifies a product and finds where it&rsquo;s selling. That side business
+            eventually got its own platform:
+            <a class="inline-link" href="https://navar.app" target="_blank" rel="noopener noreferrer">navar.app</a>,
+            an inventory and sales manager for sneaker and card resellers.
           </p>
           <p class="section-sub">
             When I&rsquo;m not coding I&rsquo;m on the bench with a microcontroller. That led to
@@ -155,9 +169,8 @@
                 <dt>user</dt><dd>daniel@darcodev</dd>
                 <dt>role</dt><dd>high_school_senior</dd>
                 <dt>focus</dt><dd>software <span class="amp">&amp;&amp;</span> hardware</dd>
-                <dt>lang</dt><dd>python</dd>
                 <dt>editor</dt><dd>vs code</dd>
-                <dt>shipped</dt><dd>2 clis &middot; 2 builds &middot; 1 on pypi</dd>
+                <dt>shipped</dt><dd>1 web app &middot; 2 clis &middot; 2 builds &middot; 1 on pypi</dd>
                 <dt>status</dt><dd><span class="status-dot" aria-hidden="true"></span> open_to_collab</dd>
               </dl>
             </div>
@@ -167,6 +180,7 @@
           <div>
             <h3 class="side-title">focus_areas</h3>
             <ul class="focus-list">
+              <li><span class="arrow" aria-hidden="true">&rarr;</span> Full-stack web apps (Next.js, Postgres)</li>
               <li><span class="arrow" aria-hidden="true">&rarr;</span> Python &amp; CLI tooling</li>
               <li><span class="arrow" aria-hidden="true">&rarr;</span> Reverse engineering &amp; undocumented APIs</li>
               <li><span class="arrow" aria-hidden="true">&rarr;</span> Hardware &amp; electronics prototyping</li>
@@ -176,6 +190,7 @@
           <div>
             <h3 class="side-title">tools</h3>
             <ul class="tools-strip">
+              <li>TypeScript</li><li>Next.js</li><li>React</li><li>PostgreSQL</li>
               <li>Python</li><li>Selenium</li><li>undetected-chromedriver</li><li>requests</li>
               <li>imaplib</li><li>GitHub Actions</li><li>PyPI</li><li>Git</li>
               <li>Arduino</li><li>C++</li>
@@ -198,6 +213,11 @@
           <p class="section-sub">Most recent milestones.</p>
         </div>
         <ol class="gitlog reveal">
+          <li>
+            <span class="log-star" aria-hidden="true">*</span>
+            <span class="log-date">2026-08</span>
+            <span class="log-msg">launched <strong>navar.app</strong>, a full-stack inventory &amp; sales platform for resellers</span>
+          </li>
           <li>
             <span class="log-star" aria-hidden="true">*</span>
             <span class="log-date">2026-07</span>
@@ -234,7 +254,7 @@
           <h2><span class="title-prefix" aria-hidden="true">//</span><span class="title-num">04.</span> let&rsquo;s build something.</h2>
           <p class="section-sub">Open to collaboration, interesting problems, and good bug reports.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:saddannythemanny@gmail.com">
+            <a class="btn btn-primary" href="mailto:daniel.projects3612@gmail.com">
               <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
               email me
             </a>
