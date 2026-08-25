@@ -17,10 +17,7 @@ const PROJECTS = [
       { type: "image", src: "assets/projects/navar/04.webp", alt: "Sales: revenue and margin, plus per-sale fees, cost, profit, ROI, and payout status" },
       { type: "image", src: "assets/projects/navar/05.webp", alt: "Building a shareable stock list, setting a list price per item and watching the margin update" },
       { type: "image", src: "assets/projects/navar/06.webp", alt: "The public list a buyer sees, where they tick what they want to claim without needing an account" },
-      // Shorts go here. Grab the id from the URL (youtube.com/shorts/<id>) and
-      // uncomment; keep aspect "portrait" so the lightbox uses the 9:16 player.
-      // { type: "youtube", id: "SHORT_ID_1", title: "Navar - demo", aspect: "portrait" },
-      // { type: "youtube", id: "SHORT_ID_2", title: "Navar - stock lists", aspect: "portrait" },
+      { type: "youtube", id: "HqITo3swmH0", title: "Navar — scanning an item in with the phone camera", aspect: "portrait" },
     ],
     links: [
       { label: "navar.app", url: "https://navar.app", icon: "external" },
