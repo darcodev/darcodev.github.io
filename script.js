@@ -1,5 +1,39 @@
 const PROJECTS = [
   {
+    name: "darch",
+    category: "software",
+    featured: true,
+    kind: "school planner & study tools",
+    tagline: "built for my own school day",
+    description:
+      "I built Darch for my own schoolwork. It keeps my schedule, homework, grades, and focus timer synced between my phone and computer. My Chrome extension pulls assignments and grades from Schoology, matches them to my classes, and reads teacher absence notes so I know which classes still meet. I also added an SAT question bank with topic filters, Desmos, explanations, and vocab flashcards.",
+    tags: ["JavaScript", "Node.js", "Redis", "PWA", "Chrome Extension"],
+    icon: "calendar",
+    cover: "assets/projects/darch/cover.webp",
+    galleryLabel: "screenshots",
+    media: [
+      { type: "image", src: "assets/projects/darch/01.webp", alt: "Today in Midnight: the school schedule, imported homework, tests, and notes about teachers who are out" },
+      { type: "image", src: "assets/projects/darch/02.webp", alt: "Homework and tests pulled from Schoology, sorted by due date and matched to their classes" },
+      { type: "image", src: "assets/projects/darch/03.webp", alt: "The week calendar with rotating school blocks, homework deadlines, and after-school plans" },
+      { type: "image", src: "assets/projects/darch/04.webp", alt: "The focus timer linked to an assignment, with study totals and timer settings" },
+      { type: "image", src: "assets/projects/darch/05.webp", alt: "Grades imported from Schoology, keeping category weights and showing what I need on the final" },
+      { type: "image", src: "assets/projects/darch/11.webp", alt: "The Chrome extension after a sync: new assignments, a new grade, a changed score, and two absent teachers" },
+      { type: "image", src: "assets/projects/darch/12.webp", alt: "The extension's grade preview, with each class's weights and individual assignment scores" },
+      { type: "image", src: "assets/projects/darch/13.webp", alt: "Reading the teacher absence post: one class won't meet, while another teacher's note says classes still meet" },
+      { type: "image", src: "assets/projects/darch/14.webp", alt: "Matching Schoology course names to my Darch classes, with saved choices for later imports" },
+      { type: "image", src: "assets/projects/darch/15.webp", alt: "An imported assignment's original Schoology class, due date, and source link" },
+      { type: "image", src: "assets/projects/darch/16.webp", alt: "The notification feed after an import: new homework, updated grades, and teachers who are out" },
+      { type: "image", src: "assets/projects/darch/06.webp", alt: "The SAT bank: Reading & Writing, Math, and vocabulary" },
+      { type: "image", src: "assets/projects/darch/07.webp", alt: "Choosing SAT math topics and difficulty before starting a practice set" },
+      { type: "image", src: "assets/projects/darch/08.webp", alt: "Working through an SAT math question, eliminating a choice and marking it for review" },
+      { type: "image", src: "assets/projects/darch/09.webp", alt: "Checking a Reading & Writing answer and reading the explanation" },
+      { type: "image", src: "assets/projects/darch/10.webp", alt: "SAT vocabulary flashcards, with words to review and mark as known or learning" },
+    ],
+    links: [
+      { label: "open Darch", url: "https://darch-sepia.vercel.app/", icon: "external" },
+    ],
+  },
+  {
     name: "navar",
     category: "software",
     featured: true,
@@ -30,7 +64,7 @@ const PROJECTS = [
     kind: "vision pipeline",
     tagline: "runs entirely on local models",
     description:
-      "I run an Amazon affiliate storefront, and the slow part was always the same: watch a product video, then go find that exact item on Amazon. This does that for me. It pulls still frames out of the video, listens to the audio, and works out what the product is using an AI model running on my own computer instead of a paid service. Then it searches Amazon and compares the listing photos against the video, so something with the right name but the wrong picture gets thrown out instead of quietly accepted. Everything it finds comes back to me in Discord to approve, correct, or throw away before anything gets posted. Adding the products to my storefront needed its own work: Beacons has no public way to do it, so I worked out how their own site does it and wrote my own version.",
+      "I run an Amazon affiliate storefront, and the slow part was always the same: watch a product video, then go find that exact item on Amazon. This does that for me. It pulls still frames out of the video, listens to the audio, and works out what the product is using a model running on my own computer instead of a paid service. Then it searches Amazon and compares the listing photos against the video, so something with the right name but the wrong picture gets thrown out instead of quietly accepted. Everything it finds comes back to me in Discord to approve, correct, or throw away before anything gets posted. Adding the products to my storefront needed its own work: Beacons has no public way to do it, so I worked out how their own site does it and wrote my own version.",
     tags: ["Python", "Ollama", "Computer Vision", "Reverse Engineering"],
     icon: "chip",
     cover: "assets/projects/product-matcher/cover.webp",
@@ -109,6 +143,7 @@ const PROJECTS = [
 ];
 
 const ICONS = {
+  calendar: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18m-13 5 2 2 5-5"/></svg>',
   lens: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/><circle cx="11" cy="11" r="2.5"/></svg>',
   mail: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>',
   chart: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>',
@@ -153,11 +188,11 @@ function renderProjects(filter = "all") {
       let badge = "gallery";
       let badgeIcon = ICONS.expand;
       if (photoCount && hasVideo) badge = `${photoCount} photos · video`;
-      else if (photoCount) badge = `${photoCount} photo${photoCount === 1 ? "" : "s"}`;
+      else if (photoCount) badge = `${photoCount} ${p.galleryLabel || `photo${photoCount === 1 ? "" : "s"}`}`;
       else if (hasVideo) { badge = "watch demo"; badgeIcon = ICONS.play; }
 
       const header = p.cover
-        ? `<button class="card-media" type="button" data-media-idx="${i}" aria-label="${esc(`Open ${hasVideo && !photoCount ? "demo video" : "photo and video gallery"} for ${p.name}`)}">
+        ? `<button class="card-media" type="button" data-media-idx="${i}" aria-label="${esc(`Open ${hasVideo && !photoCount ? "demo video" : p.galleryLabel ? "screenshot gallery" : "photo and video gallery"} for ${p.name}`)}">
         <img src="${esc(p.cover)}" alt="" loading="lazy" decoding="async" />
         <span class="card-media-fallback" aria-hidden="true">${ICONS.image}<span>photos coming soon</span></span>
         <span class="card-media-badge">${badgeIcon}<span>${esc(badge)}</span></span>

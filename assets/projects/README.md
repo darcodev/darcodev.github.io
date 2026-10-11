@@ -1,11 +1,31 @@
 # Project media
 
-Photos for the hardware galleries live here, one folder per project. Filenames
+App screenshots and hardware photos live here, one folder per project. Filenames
 must match the `cover` / `media` paths in [`script.js`](../../script.js).
 
 Current setup:
 
 ```
+darch/
+  cover.webp   <- Today, card thumbnail
+  01.webp      <- Today: schedule, imported work, teacher absences
+  02.webp      <- assignments
+  03.webp      <- week calendar
+  04.webp      <- focus timer and study sessions
+  05.webp      <- weighted grades and final-grade calculator
+  06.webp      <- SAT question bank and vocabulary
+  07.webp      <- SAT math topics and difficulty filters
+  08.webp      <- SAT math answer elimination and review flag
+  09.webp      <- SAT Reading & Writing explanation
+  10.webp      <- vocabulary flashcard
+  11.webp      <- extension sync status and assignments
+  12.webp      <- extension grade preview
+  13.webp      <- extension absence notes and class status
+  14.webp      <- extension course matching
+  15.webp      <- imported assignment source details
+  16.webp      <- import notifications
+  (real browser captures in Midnight; see darch/README.md)
+
 navar/
   cover.webp   <- dashboard, card thumbnail (real screenshot, demo account on a local dev run)
   01.webp      <- dashboard overview
