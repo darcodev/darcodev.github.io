@@ -296,6 +296,7 @@ main > section[id] { scroll-margin-top: var(--space-4); }
   gap: clamp(var(--space-8), 5vw, var(--space-16));
   align-items: center;
 }
+.hero-grid > * { min-width: 0; }
 
 .eyebrow {
   display: inline-flex;
@@ -924,7 +925,7 @@ h2 {
 }
 .lb-video {
   width: 100%;
-  max-width: 960px;
+  max-width: 1280px;
   aspect-ratio: 16 / 9;
   max-height: 70vh;
   background: #000;
@@ -932,12 +933,15 @@ h2 {
   border-radius: var(--radius-md);
   overflow: hidden;
 }
-/* vertical clips (shorts): phone-shaped player */
+/* vertical clips (shorts): phone-shaped player. sized off the available height
+   rather than a fixed width cap, so it renders as big as the viewport allows.
+   youtube picks the stream it sends from the player's pixel size, so a small
+   box permanently gets a soft one. */
 .lb-video.lb-video--portrait {
-  width: min(92vw, 420px);
   aspect-ratio: 9 / 16;
-  max-width: 100%;
-  max-height: 82vh;
+  height: min(82vh, 1000px);
+  width: auto;
+  max-width: 92vw;
 }
 .lb-video iframe { width: 100%; height: 100%; border: 0; display: block; }
 
@@ -1084,7 +1088,7 @@ h2 {
   .lightbox { height: 100svh; }
   .lb-img { max-height: min(74svh, 860px); }
   .lb-video { max-height: 64svh; }
-  .lb-video.lb-video--portrait { max-height: 74svh; }
+  .lb-video.lb-video--portrait { height: min(74svh, 1000px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
