@@ -6,17 +6,19 @@ const PROJECTS = [
     kind: "school planner & study tools",
     tagline: "built for my own school day",
     description:
-      "I built Darch for my own schoolwork. It keeps my schedule, homework, grades, and focus timer synced between my phone and computer. My Chrome extension pulls assignments and grades from Schoology, matches them to my classes, and reads teacher absence notes so I know which classes still meet. I also added an SAT question bank with topic filters, Desmos, explanations, and vocab flashcards.",
+      "I built Darch for my own schoolwork, then opened it up so other students can make an account too. It keeps my schedule, homework, grades, and focus timer synced between my phone and computer. My Chrome extension pulls assignments and grades from Schoology, matches them to my classes, and reads teacher absence notes so I know which classes still meet. Every day it builds a work plan that fits homework and test prep into free blocks and around practice, based on how long similar work actually took me. Friends can see which classes and free blocks they share, but the server only sends back the overlap, never anyone's full schedule or grades. There's also an SAT question bank with Desmos and explanations, vocab flashcards, and a few brain games for study breaks.",
     tags: ["JavaScript", "Node.js", "Redis", "PWA", "Chrome Extension"],
     icon: "calendar",
     cover: "assets/projects/darch/cover.webp",
     galleryLabel: "screenshots",
     media: [
-      { type: "image", src: "assets/projects/darch/01.webp", alt: "Today in Midnight: the school schedule, imported homework, tests, and notes about teachers who are out" },
+      { type: "image", src: "assets/projects/darch/01.webp", alt: "Today: the class schedule with a live countdown, the next school holiday, upcoming tests, and the blocks I share with a friend" },
+      { type: "image", src: "assets/projects/darch/17.webp", alt: "The daily work plan: homework and test prep fit into a free block and around soccer practice and dinner, using estimates from past work" },
+      { type: "image", src: "assets/projects/darch/18.webp", alt: "Friends settings: both people choose whether to share matching classes and free blocks, while homework and grades stay private" },
       { type: "image", src: "assets/projects/darch/02.webp", alt: "Homework and tests pulled from Schoology, sorted by due date and matched to their classes" },
       { type: "image", src: "assets/projects/darch/03.webp", alt: "The week calendar with rotating school blocks, homework deadlines, and after-school plans" },
       { type: "image", src: "assets/projects/darch/04.webp", alt: "The focus timer linked to an assignment, with study totals and timer settings" },
-      { type: "image", src: "assets/projects/darch/05.webp", alt: "Grades imported from Schoology, keeping category weights and showing what I need on the final" },
+      { type: "image", src: "assets/projects/darch/05.webp", alt: "Grades: every course's current grade, with a trend line built from its recorded scores" },
       { type: "image", src: "assets/projects/darch/11.webp", alt: "The Chrome extension after a sync: new assignments, a new grade, a changed score, and two absent teachers" },
       { type: "image", src: "assets/projects/darch/12.webp", alt: "The extension's grade preview, with each class's weights and individual assignment scores" },
       { type: "image", src: "assets/projects/darch/13.webp", alt: "Reading the teacher absence post: one class won't meet, while another teacher's note says classes still meet" },
@@ -28,6 +30,7 @@ const PROJECTS = [
       { type: "image", src: "assets/projects/darch/08.webp", alt: "Working through an SAT math question, eliminating a choice and marking it for review" },
       { type: "image", src: "assets/projects/darch/09.webp", alt: "Checking a Reading & Writing answer and reading the explanation" },
       { type: "image", src: "assets/projects/darch/10.webp", alt: "SAT vocabulary flashcards, with words to review and mark as known or learning" },
+      { type: "image", src: "assets/projects/darch/19.webp", alt: "Sudoku, one of the brain games for study breaks, with saved best times" },
     ],
     links: [
       { label: "open Darch", url: "https://darch-sepia.vercel.app/", icon: "external" },
@@ -64,14 +67,14 @@ const PROJECTS = [
     kind: "vision pipeline",
     tagline: "runs entirely on local models",
     description:
-      "I run an Amazon affiliate storefront, and the slow part was always the same: watch a product video, then go find that exact item on Amazon. This does that for me. It pulls still frames out of the video, listens to the audio, and works out what the product is using a model running on my own computer instead of a paid service. Then it searches Amazon and compares the listing photos against the video, so something with the right name but the wrong picture gets thrown out instead of quietly accepted. Everything it finds comes back to me in Discord to approve, correct, or throw away before anything gets posted. Adding the products to my storefront needed its own work: Beacons has no public way to do it, so I worked out how their own site does it and wrote my own version.",
-    tags: ["Python", "Ollama", "Computer Vision", "Reverse Engineering"],
+      "Give it a product video and it figures out exactly what the product is, then finds that item on Amazon. I built it for my Amazon storefront, where the slow part was always tracking down the exact listing by hand. It pulls still frames out of the video, transcribes the audio, and identifies the product using a vision model running on my own computer instead of a paid service. Then it searches Amazon and compares the listing photos against the frames, so something with the right name but the wrong picture gets thrown out instead of quietly accepted. Each match comes back to me in Discord to approve, correct, or throw away, so nothing goes on my storefront without me checking it.",
+    tags: ["Python", "Ollama", "Computer Vision", "Whisper"],
     icon: "chip",
     cover: "assets/projects/product-matcher/cover.webp",
+    galleryLabel: "screenshots",
     media: [
       { type: "image", src: "assets/projects/product-matcher/01.webp", alt: "Log of one run: transcribe the audio, pull frames, identify the product, search Amazon, compare the product photos, confirmed at 0.9 confidence" },
-      { type: "image", src: "assets/projects/product-matcher/02.webp", alt: "The bot reporting five videos matched to Amazon products, three confirmed and two flagged for a closer look" },
-      { type: "image", src: "assets/projects/product-matcher/03.webp", alt: "The review step, with buttons to accept a match, paste a correction, bin it, or skip it for later" },
+      { type: "image", src: "assets/projects/product-matcher/02.webp", alt: "The review step, with buttons to accept a match, paste a correction, bin it, or skip it for later" },
     ],
   },
   {
@@ -642,4 +645,3 @@ initLightbox();
 observeReveals(document.querySelectorAll(".reveal"));
 renderProjects();
 fetchStars();
-document.getElementById("year").textContent = new Date().getFullYear();

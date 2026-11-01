@@ -8,11 +8,11 @@ Current setup:
 ```
 darch/
   cover.webp   <- Today, card thumbnail
-  01.webp      <- Today: schedule, imported work, teacher absences
+  01.webp      <- Today: schedule, countdown, shared blocks with a friend
   02.webp      <- assignments
   03.webp      <- week calendar
   04.webp      <- focus timer and study sessions
-  05.webp      <- weighted grades and final-grade calculator
+  05.webp      <- grades overview with trend lines
   06.webp      <- SAT question bank and vocabulary
   07.webp      <- SAT math topics and difficulty filters
   08.webp      <- SAT math answer elimination and review flag
@@ -24,6 +24,9 @@ darch/
   14.webp      <- extension course matching
   15.webp      <- imported assignment source details
   16.webp      <- import notifications
+  17.webp      <- daily work plan
+  18.webp      <- friends settings and sharing choices
+  19.webp      <- Sudoku (brain games)
   (real browser captures in Midnight; see darch/README.md)
 
 navar/

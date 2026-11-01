@@ -25,11 +25,11 @@ in for the Schoology tab; no real Schoology account was accessed.
 
 | File | Page |
 | --- | --- |
-| `01.webp` | Today |
+| `01.webp` | Today (Nov 1 refresh) |
 | `02.webp` | Assignments |
 | `03.webp` | Calendar, week view |
 | `04.webp` | Focus timer |
-| `05.webp` | Grades |
+| `05.webp` | Grades overview (Nov 1 refresh) |
 | `06.webp` | SAT practice library |
 | `07.webp` | SAT math topic and difficulty filters |
 | `08.webp` | SAT math practice, answer elimination and review flag |
@@ -41,6 +41,18 @@ in for the Schoology tab; no real Schoology account was accessed.
 | `14.webp` | Extension course matching |
 | `15.webp` | Imported assignment source details |
 | `16.webp` | Import notifications for assignments, grades and absences |
+| `17.webp` | Daily work plan |
+| `18.webp` | Friends settings and sharing choices |
+| `19.webp` | Sudoku, from Brain games |
+
+## November 1 refresh
+
+`cover`, `01`, `05`, `17`, `18` and `19` were recaptured on November 1, 2026 from
+Darch's `main` branch as of October 31. The build ran from a clean export with an
+isolated in-memory store and two sample accounts, `jordan` and `alex.r`, who share
+AP Calc BC and a free E block. Classes, teachers, assignments, grades and game
+bests are sample data. The demo clock shows Thursday, October 29, 2026 at 11:05 AM.
+No real account or production data was used.
 
 For a refresh, use a disposable local account with sample planner data, run the
 current Darch source in Midnight, and capture the same pages in Chrome. Keep filenames stable

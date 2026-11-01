@@ -742,23 +742,6 @@ h2 {
 .contact-card .section-sub { margin-inline: auto; }
 .contact-card .hero-actions { justify-content: center; margin-top: var(--space-8); }
 
-/* footer */
-.footer {
-  border-top: 1px solid var(--color-border);
-  padding-block: var(--space-8);
-}
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-4);
-  color: var(--color-text-dim);
-  font-size: 0.82rem;
-}
-.back-top { display: inline-flex; align-items: center; min-height: 44px; transition: color 150ms ease; }
-.back-top:hover { color: var(--color-accent); }
-
 /* scroll reveal */
 .js .reveal {
   opacity: 0;
